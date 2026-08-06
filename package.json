@@ -10,7 +10,7 @@
     "hono": "^4.4.0"
   },
   "devDependencies": {
-    "wrangler": "^4.95.0"
+    "wrangler": "^4.119.0"
   },
   "private": true
 }

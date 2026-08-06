@@ -9,7 +9,7 @@ import { ModuleGrid } from './components/ModuleGrid.jsx';
 
 const app = new Hono();
 
-// Main App Route
+// Main App Route (Light Mode Theme)
 app.get('/', (c) => {
   return c.html(
     <html lang="en">
@@ -30,20 +30,17 @@ app.get('/', (c) => {
             }
             body {
               font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-              background-color: #050810;
-              color: #f8fafc;
+              background-color: #fffbeb;
+              color: #1e293b;
               min-height: 100vh;
               overflow-x: hidden;
               line-height: 1.5;
             }
             
-            /* Cyber Background Mesh */
+            /* Light Amber Background Grid */
             .cyber-amber-bg {
               position: relative;
-              background-image: 
-                radial-gradient(circle at 50% 0%, rgba(245, 158, 11, 0.16) 0%, transparent 60%),
-                radial-gradient(circle at 85% 30%, rgba(239, 68, 68, 0.12) 0%, transparent 50%),
-                radial-gradient(circle at 15% 70%, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
+              background: radial-gradient(circle at 50% 0%, #fef3c7 0%, #fffbeb 50%, #fef3c7 100%);
             }
             .grid-overlay {
               position: absolute;
@@ -53,8 +50,8 @@ app.get('/', (c) => {
               height: 100%;
               background-size: 40px 40px;
               background-image: 
-                linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+                linear-gradient(to right, rgba(217, 119, 6, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(217, 119, 6, 0.05) 1px, transparent 1px);
               pointer-events: none;
             }
 
@@ -66,77 +63,82 @@ app.get('/', (c) => {
               letter-spacing: -0.04em;
               line-height: 1.1;
               margin-bottom: 1.5rem;
+              color: #1e293b;
             }
             .hero-gradient {
-              background: linear-gradient(135deg, #ffffff 0%, #fef3c7 40%, #f59e0b 100%);
+              background: linear-gradient(135deg, #d97706 0%, #b45309 50%, #dc2626 100%);
               -webkit-background-clip: text;
               -webkit-text-fill-color: transparent;
             }
 
-            /* Cards & Glassmorphism */
+            /* Cards & Light Glassmorphism */
             .module-card {
-              background: rgba(15, 23, 42, 0.65);
-              backdrop-filter: blur(12px);
-              border: 1px solid rgba(255, 255, 255, 0.08);
+              background: #ffffff;
+              border: 1px solid rgba(217, 119, 6, 0.2);
               border-radius: 16px;
               padding: 2rem;
+              box-shadow: 0 10px 30px -10px rgba(217, 119, 6, 0.08);
               transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             }
             .module-card:hover {
               transform: translateY(-4px);
-              border-color: rgba(245, 158, 11, 0.4);
-              box-shadow: 0 20px 40px -15px rgba(245, 158, 11, 0.2);
+              border-color: rgba(217, 119, 6, 0.4);
+              box-shadow: 0 20px 40px -12px rgba(217, 119, 6, 0.18);
             }
             .module-tag {
               display: inline-block;
               padding: 0.25rem 0.65rem;
               border-radius: 6px;
-              backgroundColor: rgba(255, 255, 255, 0.05);
-              border: 1px solid rgba(255, 255, 255, 0.1);
-              color: #94a3b8;
+              backgroundColor: #fef3c7;
+              border: 1px solid #fde68a;
+              color: #92400e;
               font-size: 0.75rem;
               font-family: 'JetBrains Mono', monospace;
+              font-weight: 600;
             }
 
             /* Terminal Buttons */
             .terminal-cmd-btn {
-              background: rgba(255, 255, 255, 0.06);
-              border: 1px solid rgba(255, 255, 255, 0.12);
-              color: #f59e0b;
+              background: #fef3c7;
+              border: 1px solid #fde68a;
+              color: #d97706;
               font-family: 'JetBrains Mono', monospace;
               font-size: 0.75rem;
               padding: 0.35rem 0.75rem;
               border-radius: 6px;
               cursor: pointer;
+              font-weight: 600;
               transition: all 0.2s ease;
             }
             .terminal-cmd-btn:hover {
-              background: rgba(245, 158, 11, 0.2);
-              border-color: #f59e0b;
+              background: #d97706;
+              border-color: #d97706;
               color: #ffffff;
             }
 
             /* Metric Stat Cards */
             .stat-box {
-              background: rgba(11, 15, 26, 0.85);
-              border: 1px solid rgba(245, 158, 11, 0.2);
+              background: #ffffff;
+              border: 1px solid rgba(217, 119, 6, 0.2);
               border-radius: 12px;
               padding: 1.25rem 1.5rem;
               text-align: center;
+              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
             }
             .stat-num {
               font-family: 'Outfit', sans-serif;
               font-size: 2rem;
               font-weight: 800;
-              color: #f59e0b;
+              color: #d97706;
               line-height: 1.2;
             }
             .stat-label {
               font-size: 0.8rem;
-              color: #94a3b8;
+              color: #64748b;
               font-family: 'JetBrains Mono', monospace;
               text-transform: uppercase;
               margin-top: 0.25rem;
+              font-weight: 600;
             }
           </style>
         `}
@@ -158,15 +160,14 @@ app.get('/', (c) => {
                 gap: '0.6rem',
                 padding: '0.4rem 1rem',
                 borderRadius: '9999px',
-                backgroundColor: 'rgba(245, 158, 11, 0.12)',
-                border: '1px solid rgba(245, 158, 11, 0.3)',
-                color: '#f59e0b',
+                backgroundColor: 'rgba(217, 119, 6, 0.1)',
+                border: '1px solid rgba(217, 119, 6, 0.25)',
+                color: '#d97706',
                 fontSize: '0.85rem',
                 fontWeight: '600',
-                marginBottom: '2rem',
-                boxShadow: '0 0 20px rgba(245, 158, 11, 0.15)'
+                marginBottom: '2rem'
               }}>
-                <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#f59e0b', boxShadow: '0 0 10px #f59e0b' }}></span>
+                <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#d97706', boxShadow: '0 0 10px #d97706' }}></span>
                 Autonomous Code Defense Protocol • Version 3.9
               </div>
 
@@ -175,7 +176,7 @@ app.get('/', (c) => {
                 <span class="hero-gradient">Rot Defense Engine</span>
               </h1>
 
-              <p style={{ color: '#94a3b8', fontSize: '1.25rem', lineHeight: '1.6', marginBottom: '2.5rem', fontWeight: 400 }}>
+              <p style={{ color: '#475569', fontSize: '1.25rem', lineHeight: '1.6', marginBottom: '2.5rem', fontWeight: 400 }}>
                 Continuous AST static analysis, automated zero-day dependency vulnerability patching, and legacy refactoring bot engine.
               </p>
 
@@ -184,12 +185,12 @@ app.get('/', (c) => {
                 <a href="#scanner" style={{
                   padding: '0.9rem 2rem',
                   borderRadius: '10px',
-                  background: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
+                  background: 'linear-gradient(135deg, #d97706 0%, #b45309 100%)',
                   color: '#ffffff',
                   textDecoration: 'none',
                   fontWeight: '700',
                   fontSize: '1rem',
-                  boxShadow: '0 0 24px rgba(245, 158, 11, 0.4)',
+                  boxShadow: '0 4px 20px rgba(217, 119, 6, 0.3)',
                   transition: 'all 0.2s ease'
                 }}>
                   Launch AST Scanner &rarr;
@@ -197,12 +198,13 @@ app.get('/', (c) => {
                 <a href="mailto:mailto@rot.bot" style={{
                   padding: '0.9rem 2rem',
                   borderRadius: '10px',
-                  backgroundColor: 'rgba(255, 255, 255, 0.05)',
-                  color: '#f8fafc',
+                  backgroundColor: '#ffffff',
+                  color: '#1e293b',
                   textDecoration: 'none',
                   fontWeight: '600',
                   fontSize: '1rem',
-                  border: '1px solid rgba(255, 255, 255, 0.15)',
+                  border: '1px solid #cbd5e1',
+                  boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04)',
                   transition: 'all 0.2s ease'
                 }}>
                   Contact Owner
@@ -243,44 +245,46 @@ app.get('/', (c) => {
             {/* Code / API Section */}
             <section id="api" style={{ padding: '5rem 0 3rem 0', maxWidth: '960px', margin: '0 auto' }}>
               <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
-                <h2 style={{ fontFamily: "'Outfit', sans-serif", fontSize: '2rem', fontWeight: '800', color: '#f8fafc' }}>
+                <h2 style={{ fontFamily: "'Outfit', sans-serif", fontSize: '2rem', fontWeight: '800', color: '#1e293b' }}>
                   Developer Integration & API
                 </h2>
-                <p style={{ color: '#94a3b8', fontSize: '1rem', marginTop: '0.5rem' }}>
+                <p style={{ color: '#64748b', fontSize: '1rem', marginTop: '0.5rem' }}>
                   Trigger automated code rot scans and patch validation via REST API
                 </p>
               </div>
 
               <div style={{
-                backgroundColor: '#090d18',
+                backgroundColor: '#ffffff',
                 borderRadius: '16px',
-                border: '1px solid rgba(245, 158, 11, 0.25)',
+                border: '1px solid rgba(217, 119, 6, 0.2)',
                 padding: '1.75rem',
                 fontFamily: "'JetBrains Mono', monospace",
-                fontSize: '0.875rem'
+                fontSize: '0.875rem',
+                boxShadow: '0 10px 30px -10px rgba(0,0,0,0.05)',
+                color: '#1e293b'
               }}>
                 <div style={{ color: '#64748b', marginBottom: '1rem' }}>
                   // Trigger rot.bot AST Scan & Auto-Remediation
                 </div>
-                <div style={{ color: '#a78bfa' }}>
-                  import <span style={{ color: '#f59e0b' }}>{'{ RotDefenseEngine }'}</span> from <span style={{ color: '#34d399' }}>'@rot.bot/security'</span>;
+                <div>
+                  <span style={{ color: '#b45309', fontWeight: 'bold' }}>import</span> <span style={{ color: '#d97706' }}>{'{ RotDefenseEngine }'}</span> <span style={{ color: '#b45309', fontWeight: 'bold' }}>from</span> <span style={{ color: '#16a34a' }}>'@rot.bot/security'</span>;
                 </div>
                 <br />
                 <div>
-                  <span style={{ color: '#f472b6' }}>const</span> guard = <span style={{ color: '#f472b6' }}>new</span> RotDefenseEngine({'{'} domain: <span style={{ color: '#34d399' }}>'rot.bot'</span> {'}'});
+                  <span style={{ color: '#b45309', fontWeight: 'bold' }}>const</span> guard = <span style={{ color: '#b45309', fontWeight: 'bold' }}>new</span> RotDefenseEngine({'{'} domain: <span style={{ color: '#16a34a' }}>'rot.bot'</span> {'}'});
                 </div>
                 <div>
-                  <span style={{ color: '#f472b6' }}>const</span> report = <span style={{ color: '#f472b6' }}>await</span> guard.scanAndRemediate({'{'}
+                  <span style={{ color: '#b45309', fontWeight: 'bold' }}>const</span> report = <span style={{ color: '#b45309', fontWeight: 'bold' }}>await</span> guard.scanAndRemediate({'{'}
                 </div>
                 <div style={{ paddingLeft: '1.5rem' }}>
-                  module: <span style={{ color: '#34d399' }}>'Rot-Scan-x64'</span>,
+                  module: <span style={{ color: '#16a34a' }}>'Rot-Scan-x64'</span>,
                 </div>
                 <div style={{ paddingLeft: '1.5rem' }}>
-                  autoPatch: <span style={{ color: '#f59e0b' }}>true</span>
+                  autoPatch: <span style={{ color: '#d97706' }}>true</span>
                 </div>
                 <div>{'}'});</div>
                 <br />
-                <div style={{ color: '#10b981' }}>
+                <div style={{ color: '#16a34a', fontWeight: '600' }}>
                   console.log(report.status); // "0_VULNERABILITIES_FOUND - AST_SECURED"
                 </div>
               </div>
@@ -323,7 +327,7 @@ app.get('/', (c) => {
               typedText.innerText = cmd;
               const lines = scannerPresets[cmd] || ["Executing " + cmd + "..."];
               
-              let html = '<span style="color: #f59e0b;">rot-scan@rot.bot:~$</span> <span style="color: #ffffff;">' + cmd + '</span><div style="margin-top: 0.5rem; color: #cbd5e1;">';
+              let html = '<span style="color: #d97706;">rot-scan@rot.bot:~$</span> <span style="color: #ffffff;">' + cmd + '</span><div style="margin-top: 0.5rem; color: #cbd5e1;">';
               lines.forEach(line => {
                 html += line + '<br />';
               });

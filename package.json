@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "wrangler dev",
+    "dev": "wrangler dev --port 3006 --ip 0.0.0.0",
     "deploy": "wrangler deploy"
+  },
+  "dependencies": {
+    "hono": "^4.4.0"
   },
   "devDependencies": {
     "wrangler": "^3.60.0"

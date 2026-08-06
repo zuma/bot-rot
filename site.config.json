@@ -1,11 +1,11 @@
 {
   "domain": "rot.bot",
-  "managedBy": "parking",
-  "title": "rot.bot",
-  "headline": "rot.bot",
-  "subheadline": "This domain is registered and maintained under our digital portfolio.",
-  "badge": "Parked Domain",
-  "accentColor": "#6366f1",
-  "contactEmail": "inquiries@rot.bot",
-  "ctaText": "Inquire About Domain"
+  "managedBy": "standalone",
+  "title": "rot.bot — Autonomous Code Rot & Security Protection Engine",
+  "headline": "Autonomous Code Rot & Security Engine",
+  "subheadline": "Continuous AST analysis, zero-day dependency vulnerability patching, and automated legacy code modernization.",
+  "badge": "Security Protocol",
+  "accentColor": "#f59e0b",
+  "contactEmail": "mailto@rot.bot",
+  "ctaText": "Deploy Defense Bot"
 }
